@@ -1,22 +1,162 @@
 [
-	{ "Id": 1, "FirstName": "Izzatjon", "LastName": "Qodirov", "Class": "9A" },
-	{ "Id": 2, "FirstName": "Abror", "LastName": "Jo'raqulov", "Class": "7B" },
-	{ "Id": 3, "FirstName": "Dilshod", "LastName": "Karimov", "Class": "9A" },
-	{ "Id": 4, "FirstName": "Madina", "LastName": "Tosheva", "Class": "8B" },
-	{ "Id": 5, "FirstName": "Sardor", "LastName": "Aliyev", "Class": "10A" },
-	{ "Id": 6, "FirstName": "Nodira", "LastName": "Yusupova", "Class": "7B" },
-	{ "Id": 7, "FirstName": "Jasur", "LastName": "Rahimov", "Class": "11A" },
-	{ "Id": 8, "FirstName": "Sevinch", "LastName": "Mirzayeva", "Class": "8A" },
-	{ "Id": 9, "FirstName": "Bekzod", "LastName": "Sobirov", "Class": "9B" },
-	{ "Id": 10, "FirstName": "Gulnoza", "LastName": "Ismoilova", "Class": "10B" },
-	{ "Id": 11, "FirstName": "Otabek", "LastName": "Nazarov", "Class": "11B" },
-	{ "Id": 12, "FirstName": "Kamola", "LastName": "Usmonova", "Class": "7A" },
-	{ "Id": 13, "FirstName": "Akmal", "LastName": "Ergashev", "Class": "9A" },
-	{ "Id": 14, "FirstName": "Shahnoza", "LastName": "Boboyeva", "Class": "8B" },
-	{ "Id": 15, "FirstName": "Davron", "LastName": "Xolmatov", "Class": "10A" },
-	{ "Id": 16, "FirstName": "Feruza", "LastName": "Qosimova", "Class": "11A" },
-	{ "Id": 17, "FirstName": "Ulugbek", "LastName": "Hasanov", "Class": "7B" },
-	{ "Id": 18, "FirstName": "Zarina", "LastName": "Mahmudova", "Class": "9B" },
-	{ "Id": 19, "FirstName": "Sanjar", "LastName": "Toshpulatov", "Class": "8A" },
-	{ "Id": 20, "FirstName": "Malika", "LastName": "Saidova", "Class": "10B" }
+  {
+    "Id": 1,
+    "FirstName": "Izzatjon",
+    "LastName": "Qodirov",
+    "Class": "9A",
+    "Age": 15,
+    "Grade": 88
+  },
+  {
+    "Id": 2,
+    "FirstName": "Abror",
+    "LastName": "Jo'raqulov",
+    "Class": "7B",
+    "Age": 13,
+    "Grade": 72
+  },
+  {
+    "Id": 3,
+    "FirstName": "Dilshod",
+    "LastName": "Karimov",
+    "Class": "9A",
+    "Age": 15,
+    "Grade": 95
+  },
+  {
+    "Id": 4,
+    "FirstName": "Madina",
+    "LastName": "Tosheva",
+    "Class": "8B",
+    "Age": 14,
+    "Grade": 81
+  },
+  {
+    "Id": 5,
+    "FirstName": "Sardor",
+    "LastName": "Aliyev",
+    "Class": "10A",
+    "Age": 16,
+    "Grade": 67
+  },
+  {
+    "Id": 6,
+    "FirstName": "Nodira",
+    "LastName": "Yusupova",
+    "Class": "7B",
+    "Age": 13,
+    "Grade": 90
+  },
+  {
+    "Id": 7,
+    "FirstName": "Jasur",
+    "LastName": "Rahimov",
+    "Class": "11A",
+    "Age": 17,
+    "Grade": 55
+  },
+  {
+    "Id": 8,
+    "FirstName": "Sevinch",
+    "LastName": "Mirzayeva",
+    "Class": "8A",
+    "Age": 14,
+    "Grade": 98
+  },
+  {
+    "Id": 9,
+    "FirstName": "Bekzod",
+    "LastName": "Sobirov",
+    "Class": "9B",
+    "Age": 15,
+    "Grade": 74
+  },
+  {
+    "Id": 10,
+    "FirstName": "Gulnoza",
+    "LastName": "Ismoilova",
+    "Class": "10B",
+    "Age": 16,
+    "Grade": 83
+  },
+  {
+    "Id": 11,
+    "FirstName": "Otabek",
+    "LastName": "Nazarov",
+    "Class": "11B",
+    "Age": 17,
+    "Grade": 61
+  },
+  {
+    "Id": 12,
+    "FirstName": "Kamola",
+    "LastName": "Usmonova",
+    "Class": "7A",
+    "Age": 12,
+    "Grade": 92
+  },
+  {
+    "Id": 13,
+    "FirstName": "Akmal",
+    "LastName": "Ergashev",
+    "Class": "9A",
+    "Age": 15,
+    "Grade": 78
+  },
+  {
+    "Id": 14,
+    "FirstName": "Shahnoza",
+    "LastName": "Boboyeva",
+    "Class": "8B",
+    "Age": 14,
+    "Grade": 86
+  },
+  {
+    "Id": 15,
+    "FirstName": "Davron",
+    "LastName": "Xolmatov",
+    "Class": "10A",
+    "Age": 16,
+    "Grade": 70
+  },
+  {
+    "Id": 16,
+    "FirstName": "Feruza",
+    "LastName": "Qosimova",
+    "Class": "11A",
+    "Age": 17,
+    "Grade": 94
+  },
+  {
+    "Id": 17,
+    "FirstName": "Ulugbek",
+    "LastName": "Hasanov",
+    "Class": "7B",
+    "Age": 13,
+    "Grade": 65
+  },
+  {
+    "Id": 18,
+    "FirstName": "Zarina",
+    "LastName": "Mahmudova",
+    "Class": "9B",
+    "Age": 15,
+    "Grade": 89
+  },
+  {
+    "Id": 19,
+    "FirstName": "Sanjar",
+    "LastName": "Toshpulatov",
+    "Class": "8A",
+    "Age": 14,
+    "Grade": 77
+  },
+  {
+    "Id": 20,
+    "FirstName": "Malika",
+    "LastName": "Saidova",
+    "Class": "10B",
+    "Age": 16,
+    "Grade": 91
+  }
 ]
