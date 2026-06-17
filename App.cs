@@ -33,6 +33,7 @@ public class App
                     _teacherApp.Run();
                     break;
                 case "2":
+                    _studentApp.Run();
                     break;
                 case "0": return;
                 default:
