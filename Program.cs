@@ -1,5 +1,6 @@
 ﻿using SM;
 using SM.Apps;
+using SM.Helpers;
 using SM.Repositories.Students;
 using SM.Repositories.Teachers;
 using SM.Services.Students;
@@ -12,4 +13,5 @@ StudentService studentService = new StudentService(studentRepository);
 TeacherApp teacherApp = new TeacherApp(teacherService);
 StudentApp studentApp = new StudentApp(studentService);
 App app = new App(teacherApp, studentApp);
+Log.Write("Dastur ishga tushdi");
 app.Run();

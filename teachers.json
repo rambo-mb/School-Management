@@ -1,122 +1,128 @@
 [
-	{
-		"Id": 1,
-		"FirstName": "Izzatjon",
-		"LastName": "Qodirov",
-		"Subject": "Programming"
-	},
-	{
-		"Id": 2,
-		"FirstName": "Dilnoza",
-		"LastName": "Karimova",
-		"Subject": "Mathematics"
-	},
-	{
-		"Id": 3,
-		"FirstName": "Sardor",
-		"LastName": "Tursunov",
-		"Subject": "Physics"
-	},
-	{
-		"Id": 4,
-		"FirstName": "Malika",
-		"LastName": "Yusupova",
-		"Subject": "Chemistry"
-	},
-	{
-		"Id": 5,
-		"FirstName": "Jasur",
-		"LastName": "Rahimov",
-		"Subject": "Biology"
-	},
-	{
-		"Id": 6,
-		"FirstName": "Nigora",
-		"LastName": "Saidova",
-		"Subject": "English"
-	},
-	{
-		"Id": 7,
-		"FirstName": "Bekzod",
-		"LastName": "Aliyev",
-		"Subject": "History"
-	},
-	{
-		"Id": 8,
-		"FirstName": "Sevara",
-		"LastName": "Mirzayeva",
-		"Subject": "Geography"
-	},
-	{
-		"Id": 9,
-		"FirstName": "Otabek",
-		"LastName": "Nazarov",
-		"Subject": "Computer Science"
-	},
-	{
-		"Id": 10,
-		"FirstName": "Gulnora",
-		"LastName": "Abdullayeva",
-		"Subject": "Literature"
-	},
-	{
-		"Id": 11,
-		"FirstName": "Akmal",
-		"LastName": "Ergashev",
-		"Subject": "Economics"
-	},
-	{
-		"Id": 12,
-		"FirstName": "Madina",
-		"LastName": "Toshpulatova",
-		"Subject": "Art"
-	},
-	{
-		"Id": 13,
-		"FirstName": "Rustam",
-		"LastName": "Sobirov",
-		"Subject": "Physical Education"
-	},
-	{
-		"Id": 14,
-		"FirstName": "Kamola",
-		"LastName": "Usmonova",
-		"Subject": "Music"
-	},
-	{
-		"Id": 15,
-		"FirstName": "Aziz",
-		"LastName": "Xolmatov",
-		"Subject": "Programming"
-	},
-	{
-		"Id": 16,
-		"FirstName": "Shahnoza",
-		"LastName": "Ismoilova",
-		"Subject": "Mathematics"
-	},
-	{
-		"Id": 17,
-		"FirstName": "Davron",
-		"LastName": "Qosimov",
-		"Subject": "Chemistry"
-	},
-	{
-		"Id": 18,
-		"FirstName": "Feruza",
-		"LastName": "Boboyeva",
-		"Subject": "Biology"
-	},
-	{
-		"Id": 19,
-		"FirstName": "Ulugbek",
-		"LastName": "Hasanov",
-		"Subject": "Astronomy"
-	},
-	{
-		"Id": 20,
-		"FirstName": "Zarina",
-		"LastName": "Mahmudova",
-		"Subject": "Psychology"
-	}
+  {
+    "Id": 1,
+    "FirstName": "Izzatjon",
+    "LastName": "Qodirov",
+    "Subject": "Programming"
+  },
+  {
+    "Id": 2,
+    "FirstName": "Dilnoza",
+    "LastName": "Karimova",
+    "Subject": "Mathematics"
+  },
+  {
+    "Id": 3,
+    "FirstName": "Sardor",
+    "LastName": "Tursunov",
+    "Subject": "Physics"
+  },
+  {
+    "Id": 4,
+    "FirstName": "Malika",
+    "LastName": "Yusupova",
+    "Subject": "Chemistry"
+  },
+  {
+    "Id": 5,
+    "FirstName": "Jasur",
+    "LastName": "Rahimov",
+    "Subject": "Biology"
+  },
+  {
+    "Id": 6,
+    "FirstName": "Nigora",
+    "LastName": "Saidova",
+    "Subject": "English"
+  },
+  {
+    "Id": 7,
+    "FirstName": "Bekzod",
+    "LastName": "Aliyev",
+    "Subject": "History"
+  },
+  {
+    "Id": 8,
+    "FirstName": "Sevara",
+    "LastName": "Mirzayeva",
+    "Subject": "Geography"
+  },
+  {
+    "Id": 9,
+    "FirstName": "Otabek",
+    "LastName": "Nazarov",
+    "Subject": "Computer Science"
+  },
+  {
+    "Id": 10,
+    "FirstName": "Gulnora",
+    "LastName": "Abdullayeva",
+    "Subject": "Literature"
+  },
+  {
+    "Id": 11,
+    "FirstName": "Akmal",
+    "LastName": "Ergashev",
+    "Subject": "Economics"
+  },
+  {
+    "Id": 12,
+    "FirstName": "Madina",
+    "LastName": "Toshpulatova",
+    "Subject": "Art"
+  },
+  {
+    "Id": 13,
+    "FirstName": "Rustam",
+    "LastName": "Sobirov",
+    "Subject": "Physical Education"
+  },
+  {
+    "Id": 14,
+    "FirstName": "Kamola",
+    "LastName": "Usmonova",
+    "Subject": "Music"
+  },
+  {
+    "Id": 15,
+    "FirstName": "Aziz",
+    "LastName": "Xolmatov",
+    "Subject": "Programming"
+  },
+  {
+    "Id": 16,
+    "FirstName": "Shahnoza",
+    "LastName": "Ismoilova",
+    "Subject": "Mathematics"
+  },
+  {
+    "Id": 17,
+    "FirstName": "Davron",
+    "LastName": "Qosimov",
+    "Subject": "Chemistry"
+  },
+  {
+    "Id": 18,
+    "FirstName": "Feruza",
+    "LastName": "Boboyeva",
+    "Subject": "Biology"
+  },
+  {
+    "Id": 19,
+    "FirstName": "Ulugbek",
+    "LastName": "Hasanov",
+    "Subject": "Astronomy"
+  },
+  {
+    "Id": 20,
+    "FirstName": "Zarina",
+    "LastName": "Mahmudova",
+    "Subject": "Psychology"
+  },
+  {
+    "Id": 21,
+    "FirstName": "Akmal",
+    "LastName": "Hasanov",
+    "Subject": "Programming"
+  }
 ]

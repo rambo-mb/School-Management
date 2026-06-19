@@ -9,7 +9,7 @@ public static class ConsoleHelper
 	{
 		Console.WriteLine();
 		Console.ForegroundColor = ConsoleColor.Red;
-		Console.WriteLine(message);
+		Log.Write(message);
 		Console.ResetColor();
 
 	}
@@ -18,7 +18,7 @@ public static class ConsoleHelper
 	{
 		Console.WriteLine();
 		Console.ForegroundColor = ConsoleColor.Yellow;
-		Console.WriteLine(message);
+		Log.Write(message);
 		Console.ResetColor();
 	}
 
@@ -26,7 +26,7 @@ public static class ConsoleHelper
 	{
 		Console.WriteLine();
 		Console.ForegroundColor = ConsoleColor.Green;
-		Console.WriteLine(message);
+		Log.Write(message);
 		Console.ResetColor();
 	}
 
