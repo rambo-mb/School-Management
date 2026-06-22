@@ -1,3 +1,4 @@
+using SM.Exceptions;
 using SM.Helpers;
 using SM.Models.Teachers;
 using SM.Services.Teachers;
@@ -159,43 +160,43 @@ public class TeacherApp
 
     private void HandleDeleteById()
     {
-        Console.Clear();
-        Console.WriteLine("===== DELETE TEACHER =====\n");
-
-        int teacherId = ConsoleHelper.ValidateInt("teacher ID");
-        if (teacherId == 0) return;
-
-        Teacher teacher = _service.GetById(teacherId);
-
-        if (teacher is null)
+        try
         {
-            ConsoleHelper.PrintWarning("Teacher with this ID is not found");
-        }
-        else
-        {
+            Console.Clear();
+            Console.WriteLine("===== DELETE TEACHER =====\n");
+
+            int teacherId = ConsoleHelper.ValidateInt("teacher ID");
+            if (teacherId == 0) return;
+
             _service.Delete(teacherId);
             ConsoleHelper.PrintSuccess("Teacher deleted successfully");
-        }
 
-        ConsoleHelper.PrintContinue();
+            ConsoleHelper.PrintContinue();
+        }
+        catch (NotFoundException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            ConsoleHelper.PrintContinue();
+        }
+        catch (Exception ex)
+        {
+            ConsoleHelper.PrintError($"Error: {ex.Message}");
+            ConsoleHelper.PrintContinue();
+        }
     }
 
     private void HandleUpdateById()
     {
-        Console.Clear();
-        Console.WriteLine("===== UPDATE TEACHER =====\n");
-
-        int teacherId = ConsoleHelper.ValidateInt("teacher ID");
-        if (teacherId == 0) return;
-
-        Teacher teacher = _service.GetById(teacherId);
-
-        if (teacher is null)
+        try
         {
-            ConsoleHelper.PrintWarning("Teacher with this ID is not found");
-        }
-        else
-        {
+            Console.Clear();
+            Console.WriteLine("===== UPDATE TEACHER =====\n");
+
+            int teacherId = ConsoleHelper.ValidateInt("teacher ID");
+            if (teacherId == 0) return;
+
+            Teacher teacher = _service.GetById(teacherId);
+
             string teacherFirstName = ConsoleHelper.ValidateString("first name");
             if (teacherFirstName is null) return;
 
@@ -215,56 +216,88 @@ public class TeacherApp
 
             _service.Update(newTeacher);
             ConsoleHelper.PrintSuccess("Teacher updated successfully");
-        }
 
-        ConsoleHelper.PrintContinue();
+            ConsoleHelper.PrintContinue();
+        }
+        catch (NotFoundException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            ConsoleHelper.PrintContinue();
+        }
+        catch (Exception ex)
+        {
+            ConsoleHelper.PrintError($"Error: {ex.Message}");
+            ConsoleHelper.PrintContinue();
+        }
     }
 
     private void HandleReadById()
     {
-        Console.Clear();
-        Console.WriteLine("===== FIND TEACHER =====\n");
-
-        int teacherId = ConsoleHelper.ValidateInt("teacher ID");
-        if (teacherId == 0) return;
-
-        Teacher teacher = _service.GetById(teacherId);
-
-        if (teacher is null)
-            ConsoleHelper.PrintWarning("Teacher with this ID not found");
-        else
+        try
         {
+            Console.Clear();
+            Console.WriteLine("===== FIND TEACHER =====\n");
+
+            int teacherId = ConsoleHelper.ValidateInt("teacher ID");
+            if (teacherId == 0) return;
+
+            Teacher teacher = _service.GetById(teacherId);
+
             Console.WriteLine();
             ConsoleHelper.PrintTeacherInfo(teacher);
+
+            ConsoleHelper.PrintContinue();
         }
-        ConsoleHelper.PrintContinue();
+        catch (NotFoundException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            ConsoleHelper.PrintContinue();
+        }
+        catch (Exception ex)
+        {
+            ConsoleHelper.PrintError($"Error: {ex.Message}");
+            ConsoleHelper.PrintContinue();
+        }
     }
 
     private void HandleCreate()
     {
-        Console.Clear();
-        Console.WriteLine("===== CREATE TEACHER =====\n");
-
-        string firstName = ConsoleHelper.ValidateString("teacher's first name");
-        if (firstName is null) return;
-
-        string lastName = ConsoleHelper.ValidateString("teacher's last name");
-        if (lastName is null) return;
-
-        string subject = ConsoleHelper.ValidateString("teacher's subject");
-        if (subject is null) return;
-
-        Teacher newTeacher = new Teacher()
+        try
         {
-            FirstName = firstName,
-            LastName = lastName,
-            Subject = subject
-        };
+            Console.Clear();
+            Console.WriteLine("===== CREATE TEACHER =====\n");
 
-        _service.Add(newTeacher);
+            string firstName = ConsoleHelper.ValidateString("teacher's first name");
+            if (firstName is null) return;
 
-        ConsoleHelper.PrintSuccess("Teacher created successfully");
-        ConsoleHelper.PrintContinue();
+            string lastName = ConsoleHelper.ValidateString("teacher's last name");
+            if (lastName is null) return;
+
+            string subject = ConsoleHelper.ValidateString("teacher's subject");
+            if (subject is null) return;
+
+            Teacher newTeacher = new Teacher()
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Subject = subject
+            };
+
+            _service.Add(newTeacher);
+
+            ConsoleHelper.PrintSuccess("Teacher created successfully");
+            ConsoleHelper.PrintContinue();
+        }
+        catch (ValidationException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            ConsoleHelper.PrintContinue();
+        }
+        catch (Exception ex)
+        {
+            ConsoleHelper.PrintError($"Error: {ex.Message}");
+            ConsoleHelper.PrintContinue();
+        }
     }
 
     private void HandleReadAll()

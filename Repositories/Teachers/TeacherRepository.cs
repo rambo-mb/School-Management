@@ -1,23 +1,37 @@
+using SM.Exceptions;
 using SM.Models.Teachers;
 using SM.Repositories.Common;
 
 namespace SM.Repositories.Teachers;
 
-public class TeacherRepository : BaseRepository<Teacher>, ITeacherRepository 
+public class TeacherRepository : BaseRepository<Teacher>, ITeacherRepository
 {
-	public TeacherRepository(string filePath) : base(filePath)
-	{
-		
-	}
+    public TeacherRepository(string filePath) : base(filePath)
+    {
 
-	public override void Update(Teacher item)
-	{
-		Teacher updatedItem = GetById(item.Id);
+    }
 
-		updatedItem.FirstName = item.FirstName;
-		updatedItem.LastName = item.LastName;
-		updatedItem.Subject = item.Subject;
+    public override void Update(Teacher item)
+    {
+        Teacher updatedItem = GetById(item.Id);
 
-		SaveItems();
-	}
+        if (updatedItem is null)
+            throw new NotFoundException($"Teacher with ID {item.Id} not found");
+
+        updatedItem.FirstName = item.FirstName;
+        updatedItem.LastName = item.LastName;
+        updatedItem.Subject = item.Subject;
+
+        SaveItems();
+    }
+
+    protected override void ValidateItem(Teacher item)
+    {
+        if (string.IsNullOrWhiteSpace(item.FirstName))
+            throw new ValidationException("First name cannot be null");
+        if (string.IsNullOrWhiteSpace(item.LastName))
+            throw new ValidationException("Last name cannot be null");
+        if (string.IsNullOrWhiteSpace(item.Subject))
+            throw new ValidationException("Subject name cannot be null");
+    }
 }

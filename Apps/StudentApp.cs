@@ -1,3 +1,5 @@
+using SM.Exceptions;
+using SM.Extensions.Common;
 using SM.Helpers;
 using SM.Models.Students;
 using SM.Services.Students;
@@ -25,6 +27,7 @@ public class StudentApp
             Console.WriteLine("4. Update student by ID");
             Console.WriteLine("5. Delete student by ID");
             Console.WriteLine("6. Print classes");
+            Console.WriteLine("7. Show students with pagination");
             Console.WriteLine("0. Exit");
             Console.Write("\nChoose an option: ");
 
@@ -50,12 +53,83 @@ public class StudentApp
                 case "6":
                     HandleGetClasses();
                     break;
+                case "7":
+                    HandleShowStudentsWithPagination();
+                    break;
                 case "0": return;
                 default:
                     ConsoleHelper.PrintError("Invalid option, try again");
                     ConsoleHelper.PrintContinue();
                     break;
             }
+        }
+    }
+
+    private void HandleShowStudentsWithPagination()
+    {
+        int currentPage = 1;
+        int pageSize = 5;
+
+        while (true)
+        {
+            Console.Clear();
+            int totalItems = _service.GetCount();
+            int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+
+            if (totalItems == 0)
+            {
+                ConsoleHelper.PrintWarning("Students not found");
+                ConsoleHelper.PrintContinue();
+                return;
+            }
+
+            Console.WriteLine($"===== STUDENTS - {(currentPage - 1) * pageSize + 1}-{Math.Min(currentPage * pageSize, (int)totalItems)} =====");
+
+            List<Student> students = _service.GetAll().Paginate(currentPage, pageSize).ToList();
+
+            Console.WriteLine();
+            foreach (Student student in students)
+            {
+                ConsoleHelper.PrintStudentInfo(student);
+            }
+
+            if (currentPage != 1)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("< ");
+                Console.ResetColor();
+            }
+
+            for (int i = 1; i <= totalPages; i++)
+            {
+                if (i == currentPage)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write($" {i} ");
+                    Console.ResetColor();
+                }
+                else
+                    Console.Write($" {i} ");
+            }
+
+            if (currentPage != totalPages)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(">");
+                Console.ResetColor();
+            }
+
+            Console.Write("Press 'q' to quit...");
+
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+            if (keyInfo.Key == ConsoleKey.RightArrow && currentPage < totalPages)
+                currentPage++;
+            else if (keyInfo.Key == ConsoleKey.LeftArrow && currentPage > 1)
+                currentPage--;
+            else if (keyInfo.Key == ConsoleKey.Q)
+                return;
         }
     }
 
@@ -71,43 +145,43 @@ public class StudentApp
 
     private void HandleDeleteById()
     {
-        Console.Clear();
-        Console.WriteLine("===== DELETE STUDENT =====\n");
-
-        int studentId = ConsoleHelper.ValidateInt("student ID");
-        if (studentId == 0) return;
-
-        Student student = _service.GetById(studentId);
-
-        if (student is null)
+        try
         {
-            ConsoleHelper.PrintWarning("Student with this ID is not found");
-        }
-        else
-        {
+            Console.Clear();
+            Console.WriteLine("===== DELETE STUDENT =====\n");
+
+            int studentId = ConsoleHelper.ValidateInt("student ID");
+            if (studentId == 0) return;
+
             _service.Delete(studentId);
             ConsoleHelper.PrintSuccess("Student deleted successfully");
-        }
 
-        ConsoleHelper.PrintContinue();
+            ConsoleHelper.PrintContinue();
+        }
+        catch (NotFoundException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            ConsoleHelper.PrintContinue();
+        }
+        catch (Exception ex)
+        {
+            ConsoleHelper.PrintError($"Error: {ex.Message}");
+            ConsoleHelper.PrintContinue();
+        }
     }
 
     private void HandleUpdateById()
     {
-        Console.Clear();
-        Console.WriteLine("===== UPDATE STUDENT =====\n");
-
-        int studentId = ConsoleHelper.ValidateInt("student ID");
-        if (studentId == 0) return;
-
-        Student student = _service.GetById(studentId);
-
-        if (student is null)
+        try
         {
-            ConsoleHelper.PrintWarning("Student with this ID is not found");
-        }
-        else
-        {
+            Console.Clear();
+            Console.WriteLine("===== UPDATE STUDENT =====\n");
+
+            int studentId = ConsoleHelper.ValidateInt("student ID");
+            if (studentId == 0) return;
+
+            Student student = _service.GetById(studentId);
+
             string studentFirstName = ConsoleHelper.ValidateString("first name");
             if (studentFirstName is null) return;
 
@@ -127,30 +201,48 @@ public class StudentApp
 
             _service.Update(newStudent);
             ConsoleHelper.PrintSuccess("Student updated successfully");
-        }
 
-        ConsoleHelper.PrintContinue();
+            ConsoleHelper.PrintContinue();
+        }
+        catch (NotFoundException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            ConsoleHelper.PrintContinue();
+        }
+        catch (Exception ex)
+        {
+            ConsoleHelper.PrintError($"Error: {ex.Message}");
+            ConsoleHelper.PrintContinue();
+        }
     }
 
     private void HandleReadById()
     {
-        Console.Clear();
-        Console.WriteLine("===== FIND STUDENT =====\n");
-
-        int studentId = ConsoleHelper.ValidateInt("student ID");
-        if (studentId == 0) return;
-
-        Student student = _service.GetById(studentId);
-
-        if (student is null)
-            ConsoleHelper.PrintWarning("Student with this ID not found");
-        else
+        try
         {
+            Console.Clear();
+            Console.WriteLine("===== FIND STUDENT =====\n");
+
+            int studentId = ConsoleHelper.ValidateInt("student ID");
+            if (studentId == 0) return;
+
+            Student student = _service.GetById(studentId);
+
             Console.WriteLine();
             ConsoleHelper.PrintStudentInfo(student);
-        }
 
-        ConsoleHelper.PrintContinue();
+            ConsoleHelper.PrintContinue();
+        }
+        catch (NotFoundException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            ConsoleHelper.PrintContinue();
+        }
+        catch (Exception ex)
+        {
+            ConsoleHelper.PrintError($"Error: {ex.Message}");
+            ConsoleHelper.PrintContinue();
+        }
     }
 
     private void HandleReadAll()
@@ -178,28 +270,41 @@ public class StudentApp
 
     private void HandleCreate()
     {
-        Console.Clear();
-        Console.WriteLine("===== CREATE STUDENT =====\n");
-
-        string studentFirstName = ConsoleHelper.ValidateString("first name");
-        if (studentFirstName is null) return;
-
-        string studentLastName = ConsoleHelper.ValidateString("last name");
-        if (studentLastName is null) return;
-
-        string studentClassName = ConsoleHelper.ValidateString("student's class");
-        if (studentClassName is null) return;
-
-        Student newStudent = new Student()
+        try
         {
-            FirstName = studentFirstName,
-            LastName = studentLastName,
-            Class = studentClassName
-        };
+            Console.Clear();
+            Console.WriteLine("===== CREATE STUDENT =====\n");
 
-        _service.Add(newStudent);
+            string studentFirstName = ConsoleHelper.ValidateString("first name");
+            if (studentFirstName is null) return;
 
-        ConsoleHelper.PrintSuccess("Student created successfully");
-        ConsoleHelper.PrintContinue();
+            string studentLastName = ConsoleHelper.ValidateString("last name");
+            if (studentLastName is null) return;
+
+            string studentClassName = ConsoleHelper.ValidateString("student's class");
+            if (studentClassName is null) return;
+
+            Student newStudent = new Student()
+            {
+                FirstName = studentFirstName,
+                LastName = studentLastName,
+                Class = studentClassName
+            };
+
+            _service.Add(newStudent);
+
+            ConsoleHelper.PrintSuccess("Student created successfully");
+            ConsoleHelper.PrintContinue();
+        }
+        catch (ValidationException ex)
+        {
+            ConsoleHelper.PrintError(ex.Message);
+            ConsoleHelper.PrintContinue();
+        }
+        catch (Exception ex)
+        {
+            ConsoleHelper.PrintError($"Error: {ex.Message}");
+            ConsoleHelper.PrintContinue();
+        }
     }
 }

@@ -1,3 +1,5 @@
 [19.06.2026 21:18] Dastur ishga tushdi
 [19.06.2026 21:19] Teacher created successfully
 [19.06.2026 21:19] Invalid option, try again
+[22.06.2026 15:15] Dastur ishga tushdi
+[22.06.2026 15:15] Invalid option, try again
