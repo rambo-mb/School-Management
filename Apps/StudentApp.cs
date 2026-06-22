@@ -138,7 +138,19 @@ public class StudentApp
         Console.Clear();
         Console.WriteLine("===== CLASSES =====\n");
 
-        // _service.GetStudentsByClass();
+        Dictionary<string, int> classes = _service.GetStudentByClass();
+
+        if (classes.Count == 0)
+        {
+            ConsoleHelper.PrintWarning("No students found");
+            ConsoleHelper.PrintContinue();
+            return;
+        }
+
+        foreach (var cls in classes)
+        {
+            Console.WriteLine($"Class: {cls.Key} - Students: {cls.Value}");
+        }
 
         ConsoleHelper.PrintContinue();
     }

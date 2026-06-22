@@ -5,5 +5,5 @@ namespace SM.Services.Students;
 
 public interface IStudentService : IGenericService<Student>
 {
-	
+    Dictionary<string, int> GetStudentByClass();
 }
