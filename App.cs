@@ -14,7 +14,7 @@ public class App
         _studentApp = studentApp;
     }
 
-    public void Run()
+    public async Task RunAsync()
     {
         while (true)
         {
@@ -30,10 +30,10 @@ public class App
             switch (userInput)
             {
                 case "1":
-                    _teacherApp.Run();
+                    await _teacherApp.RunAsync();
                     break;
                 case "2":
-                    _studentApp.Run();
+                    await _studentApp.RunAsync();
                     break;
                 case "0": return;
                 default:

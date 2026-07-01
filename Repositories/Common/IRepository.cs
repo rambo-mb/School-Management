@@ -4,9 +4,9 @@ namespace SM.Repositories.Common;
 
 public interface IRepository<T> where T : IModel
 {
-	List<T> GetAll();
-	T GetById(int id);
-	void Add(T item);
-	void Update(T item);
-	void Delete(int id);
+    List<T> GetAll();
+    T GetById(int id);
+    Task AddAsync(T item);
+    Task UpdateAsync(T item);
+    Task DeleteAsync(int id);
 }

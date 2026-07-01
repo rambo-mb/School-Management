@@ -14,7 +14,7 @@ public class TeacherApp
         _service = teacherService;
     }
 
-    public void Run()
+    public async Task RunAsync()
     {
         while (true)
         {
@@ -38,16 +38,16 @@ public class TeacherApp
                     HandleReadAll();
                     break;
                 case "2":
-                    HandleCreate();
+                    await HandleCreateAsync();
                     break;
                 case "3":
                     HandleReadById();
                     break;
                 case "4":
-                    HandleUpdateById();
+                    await HandleUpdateByIdAsync();
                     break;
                 case "5":
-                    HandleDeleteById();
+                    await HandleDeleteByIdAsync();
                     break;
                 case "6":
                     HandleShowWithPagination();
@@ -158,7 +158,7 @@ public class TeacherApp
         }
     }
 
-    private void HandleDeleteById()
+    private async Task HandleDeleteByIdAsync()
     {
         try
         {
@@ -168,7 +168,7 @@ public class TeacherApp
             int teacherId = ConsoleHelper.ValidateInt("teacher ID");
             if (teacherId == 0) return;
 
-            _service.Delete(teacherId);
+            await _service.DeleteAsync(teacherId);
             ConsoleHelper.PrintSuccess("Teacher deleted successfully");
 
             ConsoleHelper.PrintContinue();
@@ -185,7 +185,7 @@ public class TeacherApp
         }
     }
 
-    private void HandleUpdateById()
+    private async Task HandleUpdateByIdAsync()
     {
         try
         {
@@ -214,7 +214,7 @@ public class TeacherApp
                 Subject = teacherSubject
             };
 
-            _service.Update(newTeacher);
+            await _service.UpdateAsync(newTeacher);
             ConsoleHelper.PrintSuccess("Teacher updated successfully");
 
             ConsoleHelper.PrintContinue();
@@ -260,7 +260,7 @@ public class TeacherApp
         }
     }
 
-    private void HandleCreate()
+    private async Task HandleCreateAsync()
     {
         try
         {
@@ -283,7 +283,7 @@ public class TeacherApp
                 Subject = subject
             };
 
-            _service.Add(newTeacher);
+            await _service.AddAsync(newTeacher);
 
             ConsoleHelper.PrintSuccess("Teacher created successfully");
             ConsoleHelper.PrintContinue();

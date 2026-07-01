@@ -1,5 +1,5 @@
-using SM.Exceptions;
 using System.Text.Json;
+using SM.Exceptions;
 using SM.Models.Common;
 
 namespace SM.Repositories.Common;
@@ -37,11 +37,11 @@ public abstract class BaseRepository<T> : IRepository<T> where T : IModel
         return items;
     }
 
-    protected void SaveItems()
+    protected async Task SaveItemsAsync()
     {
         var options = new JsonSerializerOptions { WriteIndented = true };
         string content = JsonSerializer.Serialize(items, options);
-        File.WriteAllText(_filePath, content);
+        await File.WriteAllTextAsync(_filePath, content);
     }
 
     public List<T> GetAll()
@@ -61,7 +61,7 @@ public abstract class BaseRepository<T> : IRepository<T> where T : IModel
 
     protected abstract void ValidateItem(T item);
 
-    public void Add(T item)
+    public async Task AddAsync(T item)
     {
         if (item is null)
             throw new ValidationException("Item cannot be null");
@@ -70,14 +70,14 @@ public abstract class BaseRepository<T> : IRepository<T> where T : IModel
 
         item.Id = _nextId++;
         items.Add(item);
-        SaveItems();
+        await SaveItemsAsync();
     }
 
-    public abstract void Update(T item);
+    public abstract Task UpdateAsync(T item);
 
-    public void Delete(int id)
+    public async Task DeleteAsync(int id)
     {
         items.RemoveAll(item => item.Id == id);
-        SaveItems();
+        await SaveItemsAsync();
     }
 }

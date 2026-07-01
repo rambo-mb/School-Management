@@ -11,7 +11,7 @@ public class StudentRepository : BaseRepository<Student>, IStudentRepository
 
     }
 
-    public override void Update(Student item)
+    public override async Task UpdateAsync(Student item)
     {
         Student updatedItem = GetById(item.Id);
 
@@ -22,7 +22,7 @@ public class StudentRepository : BaseRepository<Student>, IStudentRepository
         updatedItem.LastName = item.LastName;
         updatedItem.Class = item.Class;
 
-        SaveItems();
+        await SaveItemsAsync();
     }
 
     protected override void ValidateItem(Student item)

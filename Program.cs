@@ -14,4 +14,4 @@ TeacherApp teacherApp = new TeacherApp(teacherService);
 StudentApp studentApp = new StudentApp(studentService);
 App app = new App(teacherApp, studentApp);
 Log.Write("Dastur ishga tushdi");
-app.Run();
+await app.RunAsync();
